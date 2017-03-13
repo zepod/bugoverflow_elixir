@@ -1,0 +1,5 @@
+<div>
+  <%= render Bugoverflow.UserView, "show.html", conn: @conn, user: @comment.user %>
+  <%= @comment.body %>
+  <%= @comment.updated_at || @comment.inserted_at %>
+</div>

@@ -1,0 +1,32 @@
+<h2>Show article</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @article.title %>
+  </li>
+
+  <li>
+    <strong>Summary:</strong>
+    <%= @article.summary %>
+  </li>
+
+  <li>
+    <strong>Content:</strong>
+    <%= @article.content %>
+  </li>
+
+</ul>
+
+<%= render Bugoverflow.CommentView, "new.html", conn: @conn, article: @article, comment_changeset: @comment_changeset %>
+
+<ul>
+  <%= for comment <- @article.comments do %>
+    <li>
+      <%= render Bugoverflow.CommentView, "show.html", conn: @conn, comment: comment %>
+    </li>
+  <% end %>
+</ul>
+<%= link "Edit", to: article_path(@conn, :edit, @article) %>
+<%= link "Back", to: article_path(@conn, :index) %>
